@@ -77,3 +77,18 @@ form.addEventListener('submit', (e) => {
 })
 
 
+//Update and set
+
+//1. update allows you to update one or two  properties without afecting the rest of the document.
+//2. set will overwrite completely the whole document, regardless of which property you want to update
+
+// ----- Update ----
+// db.collection('cafes').doc('iZM314LPCokOWzbyyFtZ').update({
+//     name:'jain'
+// })
+
+// ----- Set ----
+// db.collection('cafes').doc('iZM314LPCokOWzbyyFtZ').set({
+//     name:'jain',
+//     city:'noida'
+// })
