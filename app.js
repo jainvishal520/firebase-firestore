@@ -16,11 +16,26 @@
 // })
 
 // ------- Getting the documents by using orderBy ---------
-db.collection('cafes').where('city', '==', 'noida').orderBy('name').get().then((snapshot) => {
-    snapshot.docs.forEach(doc => {
-        renderCafe(doc)
+// db.collection('cafes').where('city', '==', 'noida').orderBy('name').get().then((snapshot) => {
+//     snapshot.docs.forEach(doc => {
+//         renderCafe(doc)
+//     })
+// })
+
+// ----- Realtime db/ realtime listener -----
+db.collection('cafes').orderBy('city').onSnapshot(snapshot => {
+    let changes = snapshot.docChanges();
+    changes.forEach(change => {
+        console.log(change.doc.data())
+        if(change.type == 'added'){
+            renderCafe(change.doc)
+        } else if(change.type == 'removed') {
+            let li = cafeList.querySelector(`[data-id = ${change.doc.id}]`);
+            cafeList.removeChild(li);
+        }
     })
 })
+
 
 const cafeList = document.querySelector('#cafe-list');
 const form = document.querySelector('#add-cafe-form');
