@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <!-- //everything related to firebase in this -->
+        <!-- <script src="https://www.gstatic.com/firebasejs/5.10.0/firebase.js"></script> -->
+
+        <!-- app for anything , we need this -->
+        <script src="https://www.gstatic.com/firebasejs/5.0.3/firebase-app.js"></script>
+        <!-- firestore service from firebase, as we need only database -->
+        <script src="https://www.gstatic.com/firebasejs/5.0.3/firebase-firestore.js"></script>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+
+        <h1>Cloud Cafe</h1>
+
+        <div class="content">
+
+            <form id="add-cafe-form"></form>
+
+            <ul id="cafe-list"></ul>
+
+        </div>
+
+        
+        <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyAME4w43vbZhX275Y0RY71QFg1qnGsvEsU",
+            authDomain: "timapp-be999.firebaseapp.com",
+            databaseURL: "https://timapp-be999.firebaseio.com",
+            projectId: "timapp-be999",
+            storageBucket: "timapp-be999.appspot.com",
+            messagingSenderId: "306909818162"
+        };
+        firebase.initializeApp(config);
+        // creating out a reference to our database and storing inside the constant
+        const db = firebase.firestore();
+        // To avoid warnings and errors in console while using ssnapshots
+        db.settings({ timestampsInSnapshots: true })
+        </script>
+        <script src="app.js"></script>
+    </body>
+</html>
