@@ -1,12 +1,22 @@
 // we receive snapshot back of the database
 // snapshot is basically just a representation of different data inside the collection
+
+// ------- Getting all the documents in the collection ---------
 // db.collection('cafes').get().then((snapshot) => {
 //     snapshot.docs.forEach(doc => {
 //         renderCafe(doc)
 //     })
 // })
 
-db.collection('cafes').where('city', '==', 'noida').get().then((snapshot) => {
+// // ------- Getting the documents depending on the condition ---------
+// db.collection('cafes').where('city', '==', 'noida').get().then((snapshot) => {
+//     snapshot.docs.forEach(doc => {rr
+//         renderCafe(doc)
+//     })
+// })
+
+// ------- Getting the documents by using orderBy ---------
+db.collection('cafes').where('city', '==', 'noida').orderBy('name').get().then((snapshot) => {
     snapshot.docs.forEach(doc => {
         renderCafe(doc)
     })
