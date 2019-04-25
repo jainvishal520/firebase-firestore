@@ -1,6 +1,12 @@
 // we receive snapshot back of the database
 // snapshot is basically just a representation of different data inside the collection
-db.collection('cafes').get().then((snapshot) => {
+// db.collection('cafes').get().then((snapshot) => {
+//     snapshot.docs.forEach(doc => {
+//         renderCafe(doc)
+//     })
+// })
+
+db.collection('cafes').where('city', '==', 'noida').get().then((snapshot) => {
     snapshot.docs.forEach(doc => {
         renderCafe(doc)
     })
